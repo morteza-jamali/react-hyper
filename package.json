@@ -36,7 +36,11 @@
     "trailingComma": "es5"
   },
   "name": "react-hyper",
-  "author": "morteza-jamali",
+  "author": {
+    "name": "Morteza Jamali",
+    "email": "mortezajamali4241@gmail.com",
+    "url": "https://morteza-jamali.github.io"
+  },
   "module": "dist/react-hyper.esm.js",
   "size-limit": [
     {

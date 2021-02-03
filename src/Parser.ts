@@ -1,7 +1,7 @@
 const CLASS_ID_SPLIT = /([\.#]?[a-zA-Z0-9_:-]+)/;
 const NO_CLASS_ID = /^\.|#/;
 
-const Parser = (tag: any, props: any) => {
+export const Parser = (tag: any, props: any) => {
   if (!tag) {
     return 'div';
   }
@@ -48,5 +48,3 @@ const Parser = (tag: any, props: any) => {
 
   return tagName ? tagName.toLowerCase() : 'div';
 };
-
-export default Parser;
