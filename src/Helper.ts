@@ -1,35 +1,31 @@
 import tags from './data/tags.json';
+import is from './Validator';
 
-const isValidString = (param: any) =>
-  typeof param === 'string' && param.length > 0;
+const DEFAULT_TAG_NAMES: any = tags.defaults;
+//const SVG_TAG_NAMES: any = tags.svg;
 
-const startsWith = (string: string, start: any) => string[0] === start;
-
-const isSelector = (param: any) =>
-  isValidString(param) && (startsWith(param, '.') || startsWith(param, '#'));
-
-const node = (h: any) => (tagName: any) => (first: any, ...rest: any) => {
-  if (isSelector(first)) {
-    return h(tagName + first, ...rest);
-  } else if (typeof first === 'undefined') {
-    return h(tagName);
+const node = (r: any) => (tagName: any) => (first: any, ...rest: any) => {
+  if (is.selector(first)) {
+    return r(tagName + first, ...rest);
   } else {
-    return h(tagName, first, ...rest);
+    return r(tagName, first, ...rest);
   }
 };
 
-const TAG_NAMES: any = tags.defaults;
-
-export const helper = (h: any) => {
-  const createTag = node(h);
-  const exported: any = { TAG_NAMES, isSelector, createTag };
-  TAG_NAMES.forEach((n: any) => {
+const helper = (r: any) => {
+  const createTag = node(r);
+  const isSelector = is.selector;
+  const exported: any = { DEFAULT_TAG_NAMES, isSelector, createTag };
+  DEFAULT_TAG_NAMES.forEach((n: any) => {
     exported[n] = exported[n.charAt(0).toUpperCase() + n.slice(1)] = createTag(
       n
     );
   });
+
   return exported;
 };
+
+export default helper;
 
 ///////////////////////// SVG helper
 

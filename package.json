@@ -71,5 +71,27 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.1.0",
     "typescript": "^4.1.3"
-  }
+  },
+  "description": "Write React Applications in a smart way with React-Hyper",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morteza-jamali/react-hyper.git"
+  },
+  "keywords": [
+    "react",
+    "hyperscript",
+    "react-hyper",
+    "helper",
+    "react-helper",
+    "hyperscript-helper",
+    "typescript"
+  ],
+  "bugs": {
+    "url": "https://github.com/morteza-jamali/react-hyper/issues"
+  },
+  "homepage": "https://github.com/morteza-jamali/react-hyper#readme"
 }

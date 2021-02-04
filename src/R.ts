@@ -3,23 +3,15 @@ import is from './Validator';
 import { Parser } from './Parser';
 
 // Function overloading in Typescript doesn't exist but i do it in another way
-const r0 = (component: ComponentType) => {
-  render(component, {}, []);
-};
+const r0: R.R0FunctionType = component => render(component, {}, []);
 
-const r1 = (component: ComponentType, properties: PropertiesType) => {
+const r1: R.R1FunctionType = (component, properties) =>
   render(component, properties, []);
-};
 
-const r2 = (component: ComponentType, children: ChildrenType) => {
+const r2: R.R2FunctionType = (component, children) =>
   render(component, {}, children);
-};
 
-const render = (
-  component: ComponentType,
-  properties: PropertiesType,
-  children: ChildrenType
-) => {
+const render: R.RenderFunctionType = (component, properties, children) => {
   if (properties.dataset) {
     Object.keys(properties.dataset).forEach(attrName => {
       let dashedAttr = attrName.replace(
@@ -40,25 +32,40 @@ const render = (
     properties.attributes = undefined;
   }
 
-  component = Parser(component, properties);
+  if (typeof component === 'string') {
+    component = Parser(component, properties);
+  }
 
   const args: any = [component, properties].concat(children);
 
   return React.createElement.apply(React, args);
 };
 
-export const r = (
-  component: ComponentType,
-  properties?: PropertiesType,
-  children?: ChildrenType
-) => {
-  if (!is.properties(properties) && !is.children(children)) {
+const fixChildren: R.FixChildrenFunctionType = children =>
+  Array.isArray(children) ? children : [children];
+
+const r: R.FunctionType = (component, properties, children) => {
+  if (
+    Array.isArray(component) &&
+    !is.properties(properties) &&
+    !is.children(children)
+  ) {
+    return r2(React.Fragment, component);
+  } else if (!is.properties(properties) && !is.children(children)) {
+    if (is.children(properties)) {
+      return r2(component, fixChildren(properties));
+    }
+
     return r0(component);
   } else if (is.properties(properties) && !is.children(children)) {
     return r1(component, properties);
   } else if (!is.properties(properties) && is.children(children)) {
-    return r2(component, children);
+    return r2(component, fixChildren(children));
   } else if (is.properties(properties) && is.children(children)) {
-    return render(component, properties, children);
+    return render(component, properties, fixChildren(children));
   }
+
+  return React.Fragment;
 };
+
+export default r;
