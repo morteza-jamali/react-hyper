@@ -5,11 +5,8 @@ import { r, helper } from '../src/index';
 
 const { h1, span } = helper();
 
-const App = () =>
-  r(
-    'h1',
-    { className: 'firstClass secondClass', first: "fd" },
-    'This is for test'
-  );
+console.log(r('h5', 'This is a h1 tag'));
+
+const App = () => h1('This is a h1 tag');
 
 ReactDOM.render(<App />, document.getElementById('root'));
