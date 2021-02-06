@@ -1,17 +1,28 @@
-import tags from '../src/data/tags.json';
+import { tags, testingAttributes, testingValues } from './data';
 import { r } from '../src/index';
-import { getTagName } from './functions';
+import { getTagName, getAttributes } from './functions';
 
-let testInput: string[] = [];
-let testExpected: string[] = [];
+let componentTestInput: string[] = [];
+let valuesTestInput: string[] = [];
 
 tags.defaults.forEach((tag) => {
-  testInput.push(getTagName(r(tag)));
-  testExpected.push(tag);
+  componentTestInput.push(getTagName(r(tag)));
+});
+
+testingValues.forEach((value) => {
+  valuesTestInput.push(getAttributes(r('', value)).children);
 });
 
 describe('Testing r() function', () => {
   test('Testing component parameter', () => {
-    expect(testInput).toEqual(testExpected);
+    expect(componentTestInput).toEqual(tags.defaults);
+  });
+
+  test('Testing properties parameter', () => {
+    expect(getAttributes(r('', testingAttributes))).toEqual(testingAttributes);
+  });
+
+  test('Testing children parameter', () => {
+    expect(valuesTestInput).toEqual(testingValues);
   });
 });
