@@ -1,1 +1,1 @@
-### React-Hyper README file
+### React-Hyper project repo
