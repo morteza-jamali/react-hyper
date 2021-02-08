@@ -25,3 +25,5 @@ namespace R {
   ) => ReturnType;
   type FixChildrenFunctionType = (children: ChildrenType) => ChildrenType;
 }
+
+export default R;

@@ -34,16 +34,14 @@
           "options": {
             "outputPath": "dist/apps/website",
             "index": "apps/website/src/index.html",
-            "main": "apps/website/src/main.tsx",
+            "main": "apps/website/src/main.ts",
             "polyfills": "apps/website/src/polyfills.ts",
             "tsConfig": "apps/website/tsconfig.app.json",
             "assets": [
               "apps/website/src/favicon.ico",
               "apps/website/src/assets"
             ],
-            "styles": [
-              "apps/website/src/styles.css"
-            ],
+            "styles": [],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },

@@ -1,9 +1,14 @@
 {
   "npmScope": "react-hyper",
-  "affected": { "defaultBase": "master" },
+  "affected": {
+    "defaultBase": "master"
+  },
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
@@ -14,15 +19,29 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "ZDIwZjZhNDktMzI3Yy00OTZiLWFiNGYtMWJlNGI2YjdhM2YwfHJlYWQtd3JpdGU=",
-        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "e2e"
+        ],
         "canTrackAnalytics": false,
         "showUsageWarnings": true
       }
     }
   },
   "projects": {
-    "website": { "tags": [] },
-    "website-e2e": { "tags": [], "implicitDependencies": ["website"] },
-    "react-hyper": { "tags": [] }
+    "website": {
+      "tags": []
+    },
+    "website-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "website"
+      ]
+    },
+    "react-hyper": {
+      "tags": []
+    }
   }
 }

@@ -1,9 +1,10 @@
 import React from 'react';
+import R from './types/react-hyper';
 import is from './Validator';
 import { Parser } from './Parser';
 
 // Function overloading in Typescript doesn't exist but i do it in another way
-const r0: R.R0FunctionType = component => render(component, {}, []);
+const r0: R.R0FunctionType = (component) => render(component, {}, []);
 
 const r1: R.R1FunctionType = (component, properties) =>
   render(component, properties, []);
@@ -13,10 +14,10 @@ const r2: R.R2FunctionType = (component, children) =>
 
 const render: R.RenderFunctionType = (component, properties, children) => {
   if (properties.dataset) {
-    Object.keys(properties.dataset).forEach(attrName => {
+    Object.keys(properties.dataset).forEach((attrName) => {
       let dashedAttr = attrName.replace(
         /([a-z])([A-Z])/,
-        match => `${match[0]}-${match[1].toLowerCase()}`
+        (match) => `${match[0]}-${match[1].toLowerCase()}`
       );
       properties[`data-${dashedAttr}`] = properties.dataset[attrName];
     });
@@ -25,7 +26,7 @@ const render: R.RenderFunctionType = (component, properties, children) => {
   }
 
   if (properties.attributes) {
-    Object.keys(properties.attributes).forEach(attrName => {
+    Object.keys(properties.attributes).forEach((attrName) => {
       properties[attrName] = properties.attributes[attrName];
     });
 
@@ -41,7 +42,7 @@ const render: R.RenderFunctionType = (component, properties, children) => {
   return React.createElement.apply(React, args);
 };
 
-const fixChildren: R.FixChildrenFunctionType = children =>
+const fixChildren: R.FixChildrenFunctionType = (children) =>
   Array.isArray(children) ? children : [children];
 
 const r: R.FunctionType = (component, properties, children) => {
