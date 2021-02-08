@@ -1,10 +1,9 @@
 import { css } from 'glamor';
+import theme from '../../theme/theme';
 
 const styles = () =>
   css({
-    minHeight: '400px',
-    width: '100%',
-    backgroundColor: '#2f82ff',
+    backgroundColor: theme.brand,
   });
 
 export default styles;

@@ -1,6 +1,6 @@
 import { helpers } from '@react-hyper/react-hyper';
 
-const { a, div, nav, img, span } = helpers;
+const { a, div, nav, img, span, section } = helpers;
 
 const NavBarBurger = a(
   {
@@ -16,7 +16,7 @@ const NavBarBurger = a(
 const NavBarBrand = a(
   { className: 'navbar-item', href: 'https://bulma.io' },
   img({
-    src: 'https://bulma.io/images/bulma-logo.png',
+    src: 'assets/logo.svg',
     width: '112',
     height: '28',
   })
@@ -39,19 +39,22 @@ const NavBarEnd = div(
 );
 
 const NavBar = () =>
-  nav(
-    {
-      className: 'navbar',
-      role: 'navigation',
-      'aria-label': 'main navigation',
-    },
-    [
-      div({ className: 'navbar-brand' }, [NavBarBrand, NavBarBurger]),
-      div({ className: 'navbar-menu', id: 'navbarBasicExample' }, [
-        NavBarStart,
-        NavBarEnd,
-      ]),
-    ]
+  section(
+    { className: 'section py-0' },
+    nav(
+      {
+        className: 'navbar',
+        role: 'navigation',
+        'aria-label': 'main navigation',
+      },
+      [
+        div({ className: 'navbar-brand' }, [NavBarBrand, NavBarBurger]),
+        div({ className: 'navbar-menu', id: 'navbarBasicExample' }, [
+          NavBarStart,
+          NavBarEnd,
+        ]),
+      ]
+    )
   );
 
 export default NavBar;

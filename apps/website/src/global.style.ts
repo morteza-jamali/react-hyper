@@ -1,12 +1,7 @@
 import 'bulma/css/bulma.css';
+import './style.css';
 import { css } from 'glamor';
 
-const styles = () => {
-  css.global('html', {
-    overflowY: 'visible !important',
-  });
-
-  return css({});
-};
+const styles = () => css({});
 
 export default styles;
