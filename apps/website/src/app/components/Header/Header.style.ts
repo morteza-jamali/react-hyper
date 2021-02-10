@@ -3,7 +3,10 @@ import theme from '../../theme/theme';
 
 const styles = () =>
   css({
-    backgroundColor: theme.brand,
+    backgroundColor: theme.brand.dark,
+    '& img': {
+      width: '15%',
+    },
   });
 
 export default styles;

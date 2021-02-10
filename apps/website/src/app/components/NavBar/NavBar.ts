@@ -1,6 +1,8 @@
-import { helpers } from '@react-hyper/react-hyper';
+import { r, helpers } from '@react-hyper/react-hyper';
+import Logo from '../Logo/Logo';
+import styles from './NavBar.style';
 
-const { a, div, nav, img, span, section } = helpers;
+const { a, div, nav, span, section, i } = helpers;
 
 const NavBarBurger = a(
   {
@@ -14,33 +16,38 @@ const NavBarBurger = a(
 );
 
 const NavBarBrand = a(
-  { className: 'navbar-item', href: 'https://bulma.io' },
-  img({
-    src: 'assets/logo.svg',
-    width: '112',
-    height: '28',
-  })
+  {
+    className: 'navbar-item p-0 has-text-weight-bold',
+    href: 'https://bulma.io',
+  },
+  [
+    r(Logo, {
+      className: 'is-fullHeight mr-3',
+    }),
+    span({ className: 'is-flex-shrink-0' }, 'React Hyper'),
+  ]
 );
 
-const NavBarStart = div({ className: 'navbar-start' }, [
-  a({ className: 'navbar-item' }, 'Home'),
-  a({ className: 'navbar-item' }, 'Documentation'),
-]);
-
-const NavBarEnd = div(
-  { className: 'navbar-end' },
+const NavBarEnd = div({ className: 'navbar-end' }, [
+  a({ className: 'navbar-item' }, 'Playground'),
+  a({ className: 'navbar-item' }, 'Docs'),
   div(
     { className: 'navbar-item' },
     div({ className: 'buttons' }, [
-      a({ className: 'button is-primary' }, 'Sign up'),
-      a({ className: 'button is-light' }, 'Login'),
+      a({ className: 'button' }, [
+        span(
+          { className: 'icon' },
+          i({ className: 'lni lni-github-original' })
+        ),
+        span('Github'),
+      ]),
     ])
-  )
-);
+  ),
+]);
 
 const NavBar = () =>
   section(
-    { className: 'section py-0' },
+    { className: 'section py-0', ...styles() },
     nav(
       {
         className: 'navbar',
@@ -49,10 +56,7 @@ const NavBar = () =>
       },
       [
         div({ className: 'navbar-brand' }, [NavBarBrand, NavBarBurger]),
-        div({ className: 'navbar-menu', id: 'navbarBasicExample' }, [
-          NavBarStart,
-          NavBarEnd,
-        ]),
+        div({ className: 'navbar-menu', id: 'navbarBasicExample' }, NavBarEnd),
       ]
     )
   );

@@ -1,5 +1,8 @@
 const theme: any = {
-  brand: '#451e3e',
+  brand: {
+    light: '#851e3e',
+    dark: '#451e3e',
+  },
   dark: {},
   light: {
     header: {
