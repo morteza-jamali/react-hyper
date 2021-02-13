@@ -1,10 +1,15 @@
 import { r } from '@react-hyper/react-hyper';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app/App';
+import routes from './routes';
+import Base from './app/components/Base/Base';
 import styles from './global.style';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 ReactDOM.render(
-  r(React.StrictMode, r(App, { ...styles() })),
+  r(
+    React.StrictMode,
+    r(Base, { ...styles() }, r(BrowserRouter, r(Switch, routes(Route, r))))
+  ),
   document.getElementById('root')
 );

@@ -10,11 +10,12 @@ const javascript = `const apple = () => {
   console.log('This is another console log')
 }`;
 
-const Home = r(Page, [
-  r(NavBar),
-  r(Header),
-  r(CodeComparison, { jsx, javascript }),
-  r(Footer),
-]);
+const Home = () =>
+  r(Page, [
+    r(NavBar),
+    r(Header),
+    r(CodeComparison, { jsx, javascript }),
+    r(Footer),
+  ]);
 
 export default Home;

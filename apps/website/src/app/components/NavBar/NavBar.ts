@@ -18,7 +18,7 @@ const NavBarBurger = a(
 const NavBarBrand = a(
   {
     className: 'navbar-item p-0 has-text-weight-bold',
-    href: 'https://bulma.io',
+    href: '/',
   },
   [
     r(Logo, {
@@ -30,7 +30,7 @@ const NavBarBrand = a(
 
 const NavBarEnd = div({ className: 'navbar-end' }, [
   a({ className: 'navbar-item' }, 'Playground'),
-  a({ className: 'navbar-item' }, 'Docs'),
+  a({ className: 'navbar-item', href: '/docs' }, 'Docs'),
   div(
     { className: 'navbar-item' },
     div({ className: 'buttons' }, [
