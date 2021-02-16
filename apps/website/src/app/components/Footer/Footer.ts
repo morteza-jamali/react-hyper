@@ -1,4 +1,4 @@
-import { helpers } from '@react-hyper/react-hyper';
+import helpers from '@react-hyper/react-hyper/helpers';
 
 const { footer, div, span, i, a } = helpers;
 

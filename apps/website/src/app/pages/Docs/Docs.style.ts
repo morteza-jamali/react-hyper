@@ -8,6 +8,12 @@ const styles = () =>
     bottom: '0',
     left: '0',
     '& .content-section': {
+      minHeight: '0',
+      flexBasis: 'calc(100% / 2)',
+    },
+    '& .markdown-body': {
+      overflowX: 'hidden',
+      overflowY: 'auto',
       borderLeft: '1px solid #eeeeee',
     },
   });

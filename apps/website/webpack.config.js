@@ -7,9 +7,6 @@ module.exports = (config) => {
       },
       {
         loader: 'markdown-loader',
-        options: {
-          headerIds: false,
-        },
       },
     ],
   });

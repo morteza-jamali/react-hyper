@@ -1,26 +1,34 @@
-import { r, helpers } from '@react-hyper/react-hyper';
+import r from '@react-hyper/react-hyper/r';
+import helpers from '@react-hyper/react-hyper/helpers';
+import Page from '@websiteComponents/Page/Page';
+import NavBar from '@websiteComponents/NavBar/NavBar';
+import Footer from '@websiteComponents/Footer/Footer';
+import SideBar from '@websiteComponents/SideBar/SideBar';
+import docs from '@projectRoot/documents/docs.md';
 import styles from './Docs.style';
-import Page from '../../components/Page/Page';
-import NavBar from '../../components/NavBar/NavBar';
-import Footer from '../../components/Footer/Footer';
-import SideBar from '../../components/SideBar/SideBar';
-import docs from '../../../../../../documents/docs.md';
 
 const { section, div } = helpers;
 
 const SideBarItems = [
   {
-    label: 'Overview',
-    items: ['Install'],
+    label: 'Getting Started',
+    items: ['Introduction', 'Install', 'Examples', 'Development'],
+  },
+  {
+    label: 'API',
+    items: ['r()', 'helper()'],
   },
 ];
 
 const ContentSection = section(
-  { className: 'section is-flex px-0 is-flex-grow-1 is-flex-shrink-1' },
+  {
+    className:
+      'section is-flex px-0 is-flex-grow-1 is-flex-shrink-1 content-section',
+  },
   [
     div({ className: 'px-5' }, SideBar(SideBarItems)),
     div({
-      className: 'is-flex-grow-1 is-flex-shrink-1 px-5 content-section',
+      className: 'is-flex-grow-1 is-flex-shrink-1 px-5 markdown-body',
       dangerouslySetInnerHTML: { __html: docs },
     }),
   ]

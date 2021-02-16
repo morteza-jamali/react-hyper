@@ -1,8 +1,6 @@
-import { helpers } from '@react-hyper/react-hyper';
-
-const { img } = helpers;
+import helpers from '@react-hyper/react-hyper/helpers';
 
 const Logo = ({ white, ...rest }: any) =>
-  img({ src: `assets/logo${white ? 'white' : ''}.svg`, ...rest });
+  helpers.img({ src: `assets/logo${white ? 'white' : ''}.svg`, ...rest });
 
 export default Logo;

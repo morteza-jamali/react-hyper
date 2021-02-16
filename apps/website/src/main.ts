@@ -1,4 +1,4 @@
-import { r } from '@react-hyper/react-hyper';
+import r from '@react-hyper/react-hyper/r';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import routes from './routes';

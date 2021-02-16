@@ -16,7 +16,11 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@react-hyper/react-hyper": ["libs/react-hyper/src/index.ts"]
+      "@react-hyper/react-hyper": ["libs/react-hyper/src/index.ts"],
+      "@react-hyper/react-hyper/helpers": ["libs/react-hyper/src/helpers.ts"],
+      "@react-hyper/react-hyper/r": ["libs/react-hyper/src/r.ts"],
+      "@projectRoot/*": ["*"],
+      "@websiteComponents/*": ["apps/website/src/app/components/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

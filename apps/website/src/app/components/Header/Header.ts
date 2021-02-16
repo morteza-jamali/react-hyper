@@ -1,8 +1,9 @@
-import { r, helpers } from '@react-hyper/react-hyper';
+import r from '@react-hyper/react-hyper/r';
+import helpers from '@react-hyper/react-hyper/helpers';
 import Logo from '../Logo/Logo';
 import styles from './Header.style';
 
-const { h1, h2, button, div, p, section } = helpers;
+const { h1, h2, div, p, section, a } = helpers;
 
 const Header = () =>
   section(
@@ -22,8 +23,9 @@ const Header = () =>
         div({ className: 'field is-grouped is-justify-content-center' }, [
           p(
             { className: 'control' },
-            button(
+            a(
               {
+                href: '/docs',
                 className:
                   'button is-primary is-light is-capitalized has-text-weight-bold',
               },
@@ -32,8 +34,9 @@ const Header = () =>
           ),
           p(
             { className: 'control' },
-            button(
+            a(
               {
+                href: '/',
                 className:
                   'button is-light is-capitalized has-text-weight-bold',
               },

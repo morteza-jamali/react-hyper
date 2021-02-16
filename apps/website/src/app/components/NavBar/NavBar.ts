@@ -1,4 +1,5 @@
-import { r, helpers } from '@react-hyper/react-hyper';
+import r from '@react-hyper/react-hyper/r';
+import helpers from '@react-hyper/react-hyper/helpers';
 import Logo from '../Logo/Logo';
 import styles from './NavBar.style';
 
