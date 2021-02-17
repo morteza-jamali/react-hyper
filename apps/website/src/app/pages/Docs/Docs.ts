@@ -20,25 +20,24 @@ const SideBarItems = [
   },
 ];
 
-const ContentSection = section(
-  {
-    className:
-      'section is-flex px-0 is-flex-grow-1 is-flex-shrink-1 content-section',
-  },
-  [
-    div({ className: 'px-5' }, SideBar(SideBarItems)),
-    div({
-      className: 'is-flex-grow-1 is-flex-shrink-1 px-5 markdown-body',
-      dangerouslySetInnerHTML: { __html: docs },
-    }),
-  ]
-);
+const ContentSection = section([
+  div(SideBar(SideBarItems)).class('px-5'),
+  div({
+    dangerouslySetInnerHTML: { __html: docs },
+  }).class('is-flex-grow-1', 'markdown-body', 'px-5', 'is-flex-shrink-1'),
+]).class([
+  'section',
+  'content-section',
+  'is-flex-shrink-1',
+  'is-flex-grow-1',
+  'px-0',
+  'is-flex',
+]);
 
 const Docs = () =>
-  r(Page, { className: 'is-flex is-flex-direction-column', ...styles() }, [
-    r(NavBar),
-    ContentSection,
-    r(Footer),
+  r(Page, { ...styles() }, [r(NavBar), ContentSection, r(Footer)]).class([
+    'is-flex',
+    'is-flex-direction-column',
   ]);
 
 export default Docs;

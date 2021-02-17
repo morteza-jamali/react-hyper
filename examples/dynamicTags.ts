@@ -1,3 +1,4 @@
+import r from '../libs//react-hyper/src/r';
 import faker from 'faker';
 
 const code = () =>

@@ -7,59 +7,50 @@ const { a, div, nav, span, section, i } = helpers;
 
 const NavBarBurger = a(
   {
-    className: 'navbar-burger',
     role: 'button',
     'aria-label': 'menu',
     'aria-expanded': 'false',
     'data-target': 'navbarBasicExample',
   },
-  [Array(3).forEach(() => span({ 'aria-hidden': 'true' }))]
-);
+  span({ 'aria-hidden': 'true' }).repeat(3)
+).class('navbar-burger');
 
 const NavBarBrand = a(
   {
-    className: 'navbar-item p-0 has-text-weight-bold',
     href: '/',
   },
   [
-    r(Logo, {
-      className: 'is-fullHeight mr-3',
-    }),
-    span({ className: 'is-flex-shrink-0' }, 'React Hyper'),
+    r(Logo).class(['is-fullHeight', 'mr-3']),
+    span('React Hyper').class('is-flex-shrink-0'),
   ]
-);
+).class(['navbar-item', 'p-0', 'has-text-weight-bold']);
 
-const NavBarEnd = div({ className: 'navbar-end' }, [
-  a({ className: 'navbar-item' }, 'Playground'),
-  a({ className: 'navbar-item', href: '/docs' }, 'Docs'),
+const NavBarEnd = div([
+  a('Playground').class('navbar-item'),
+  a({ href: '/docs' }, 'Docs').class('navbar-item'),
   div(
-    { className: 'navbar-item' },
-    div({ className: 'buttons' }, [
-      a({ className: 'button' }, [
-        span(
-          { className: 'icon' },
-          i({ className: 'lni lni-github-original' })
-        ),
+    div([
+      a([
+        span(i().class(['lni', 'lni-github-original'])).class('icon'),
         span('Github'),
-      ]),
-    ])
-  ),
-]);
+      ]).class('button'),
+    ]).class('buttons')
+  ).class('navbar-item'),
+]).class('navbar-end');
 
 const NavBar = () =>
   section(
-    { className: 'section py-0', ...styles() },
+    { ...styles() },
     nav(
       {
-        className: 'navbar',
         role: 'navigation',
         'aria-label': 'main navigation',
       },
       [
-        div({ className: 'navbar-brand' }, [NavBarBrand, NavBarBurger]),
-        div({ className: 'navbar-menu', id: 'navbarBasicExample' }, NavBarEnd),
+        div([NavBarBrand, NavBarBurger]).class('navbar-brand'),
+        div({ id: 'navbarBasicExample' }, NavBarEnd).class('navbar-menu'),
       ]
-    )
-  );
+    ).class('navbar')
+  ).class(['section', 'py-0']);
 
 export default NavBar;

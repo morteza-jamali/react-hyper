@@ -7,18 +7,14 @@ const itemsChildArray = (items: any[]) => {
 
   items.forEach(({ label, items }) => {
     result.push(
-      p({ className: 'menu-label' }, label),
-      ul(
-        { className: 'menu-list' },
-        items.map((i: string) => li(a(i)))
-      )
+      p(label).class('menu-label'),
+      ul(items.map((i: string) => li(a(i)))).class('menu-list')
     );
   });
 
   return result;
 };
 
-const SideBar = (items: any[]) =>
-  aside({ className: 'menu' }, itemsChildArray(items));
+const SideBar = (items: any[]) => aside(itemsChildArray(items)).class('menu');
 
 export default SideBar;

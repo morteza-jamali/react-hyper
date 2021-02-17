@@ -7,7 +7,7 @@ import Header from '@websiteComponents/Header/Header';
 import Footer from '@websiteComponents/Footer/Footer';
 import Feature from '@websiteComponents/Feature/Feature';
 import CodeComparison from '@websiteComponents/CodeComparison/CodeComparison';
-import dynamicTags from '@projectRoot/examples/dynamic-tags';
+import dynamicTags from '@projectRoot/examples/dynamicTags';
 
 const { section, h3 } = helpers;
 
@@ -16,20 +16,24 @@ const javascript = `const apple = () => {
   console.log('This is another console log')
 }`;
 
-const FeaturesSection = section({ className: 'section features-section' }, [
-  h3(
-    { className: 'has-text-centered has-text-weight-bold is-size-3' },
-    'React Hyper Features'
-  ),
+const FeaturesSection = section([
+  h3('React Hyper Features').class([
+    'has-text-centered',
+    'is-size-3',
+    'has-text-weight-bold',
+  ]),
   r(Feature, dynamicTags),
-]);
+]).class(['section', 'features-section']);
 
 const Home = () =>
   r(Page, { ...styles() }, [
     r(NavBar),
     r(Header),
     FeaturesSection,
-    r(CodeComparison, { jsx, javascript }),
+    r(CodeComparison, [
+      { language: 'javascript', code: javascript },
+      { language: 'jsx', code: jsx },
+    ]),
     r(Footer),
   ]);
 

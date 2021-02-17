@@ -5,47 +5,51 @@ import styles from './Header.style';
 
 const { h1, h2, div, p, section, a } = helpers;
 
+const Buttons = div([
+  p(
+    a(
+      {
+        href: '/docs',
+      },
+      'get started'
+    ).class([
+      'button',
+      'is-primary',
+      'is-light',
+      'has-text-weight-bold',
+      'is-capitalized',
+    ])
+  ).class('control'),
+  p(
+    a(
+      {
+        href: '/',
+      },
+      'Playground'
+    ).class(['button', 'is-light', 'has-text-weight-bold', 'is-capitalized'])
+  ).class('control'),
+]).class(['field', 'is-grouped', 'is-justify-content-center']);
+
+const Text = r([
+  h1('React Hyper').class(['title', 'my-6', 'has-text-light', 'is-1']),
+  h2('create your react application like a pro 😎').class([
+    'subtitle',
+    'mb-6',
+    'has-text-light',
+    'is-capitalized',
+  ]),
+]);
+
 const Header = () =>
   section(
-    { className: 'hero', ...styles() },
-    div(
-      {
-        className:
-          'hero-body is-flex is-flex-direction-column is-justify-content-center is-align-items-center',
-      },
-      [
-        r(Logo, { white: true }),
-        h1({ className: 'title is-1 has-text-light my-6' }, 'React Hyper'),
-        h2(
-          { className: 'subtitle is-capitalized has-text-light mb-6' },
-          'create your react application like a pro 😎'
-        ),
-        div({ className: 'field is-grouped is-justify-content-center' }, [
-          p(
-            { className: 'control' },
-            a(
-              {
-                href: '/docs',
-                className:
-                  'button is-primary is-light is-capitalized has-text-weight-bold',
-              },
-              'get started'
-            )
-          ),
-          p(
-            { className: 'control' },
-            a(
-              {
-                href: '/',
-                className:
-                  'button is-light is-capitalized has-text-weight-bold',
-              },
-              'Playground'
-            )
-          ),
-        ]),
-      ]
-    )
-  );
+    { ...styles() },
+    div([r(Logo, { white: true }), Text, Buttons]).class([
+      'hero-body',
+      'is-align-items-center',
+      'is-justify-content-center',
+      'is-flex-direction-column',
+      'is-flex',
+    ])
+  ).class('hero');
 
 export default Header;

@@ -11,15 +11,20 @@ const { div, span, a } = helpers;
 const ToggleResult = ({ name, label, sharedState }: any) =>
   span(
     {
-      className:
-        'tag is-light is-primary is-uppercase run-code is-clickable mx-1',
       onClick: () =>
         sharedState.resultState.showResult(
           !sharedState.resultState.displayResult
         ),
     },
-    [r(Icon, { name, className: 'mr-2' }), label]
-  );
+    [r(Icon, { name }).class('mr-2'), label]
+  ).class([
+    'tag',
+    'is-light',
+    'is-primary',
+    'is-uppercase',
+    'is-clickable',
+    'mx-1',
+  ]);
 
 const RunButton = ({ sharedState }: any) =>
   ToggleResult({ name: 'angle-double-left', label: 'Run', sharedState });
@@ -29,11 +34,15 @@ const BackButton = ({ sharedState }: any) =>
 
 const PlayButton = ({ play }: any) =>
   span(
-    {
-      className: 'tag is-light is-uppercase run-code is-clickable mx-1',
-    },
-    a({ href: play }, [r(Icon, { name: 'play', className: 'mr-2' }), 'Play'])
-  );
+    a({ href: play }, [r(Icon, { name: 'play' }).class('mr-2'), 'Play'])
+  ).class([
+    'tag',
+    'mx-1',
+    'is-clickable',
+    'run-code',
+    'is-uppercase',
+    'is-light',
+  ]);
 
 const BottomButtons = ({ play, sharedState }: any) => {
   const child: any[] = [
@@ -46,18 +55,17 @@ const BottomButtons = ({ play, sharedState }: any) => {
     child.push(r(PlayButton, { play }));
   }
 
-  return div({ className: 'bottom-buttons is-zIndex-10' }, child);
+  return div(child).class(['bottom-buttons', 'is-zIndex-10']);
 };
 
 const LanguageLabel = ({ language, result_language, sharedState }: any) =>
   span(
-    { className: 'tag is-light is-info is-uppercase is-zIndex-10' },
     result_language
       ? sharedState.resultState.displayResult
         ? result_language
         : language
       : language
-  );
+  ).class(['tag', 'is-zIndex-10', 'is-uppercase', 'is-info', 'is-light']);
 
 const SyntaxHighlighter = ({ language, children, hasBottomButtons }: any) =>
   r(PrismSyntaxHighlighter, {
@@ -65,20 +73,24 @@ const SyntaxHighlighter = ({ language, children, hasBottomButtons }: any) =>
     style: dracula,
     showLineNumbers: true,
     children,
-    className: `is-fullHeight is-fullWidth ${
-      hasBottomButtons ? 'has-bottom-buttons' : ''
-    }`.trimRight(),
-  });
+  }).class([
+    'is-fullHeight',
+    'is-fullWidth',
+    hasBottomButtons ? 'has-bottom-buttons' : '',
+  ]);
 
 const ResultCode = ({ result, result_language, sharedState }: any) =>
   div(
-    {
-      className: `result-code is-zIndex-5 ${
-        sharedState.resultState.displayResult ? '' : 'is-invisible'
-      }`.trimRight(),
-    },
-    r(SyntaxHighlighter, { language: result_language, children: result })
-  );
+    r(SyntaxHighlighter, {
+      language: result_language,
+      children: result,
+      hasBottomButtons: true,
+    })
+  ).class([
+    'result-code',
+    'is-zIndex-5',
+    sharedState.resultState.displayResult ? '' : 'is-invisible',
+  ]);
 
 const Code = ({
   children,
@@ -108,7 +120,7 @@ const Code = ({
     r(LanguageLabel, { language, result_language, sharedState })
   );
 
-  return div({ className: 'rh-code-block', ...styles(), ...rest }, child);
+  return div({ ...styles(), ...rest }, child).class('rh-code-block');
 };
 
 export default Code;

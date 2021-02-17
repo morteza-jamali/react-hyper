@@ -1,7 +1,67 @@
 import React from 'react';
 import R from './types/react-hyper';
 import is from './Validator';
+import { Map } from 'immutable';
 import { Parser } from './Parser';
+
+const customComponentFunctions = {
+  repeat(prop: number) {
+    return r(
+      Array(prop)
+        .fill(0)
+        .map(() => this)
+    );
+  },
+  class(prop: string | string[]) {
+    const unfreezedObjectProps = { ...this.props };
+    prop = typeof prop === 'string' ? [prop] : prop;
+
+    unfreezedObjectProps.className = unfreezedObjectProps.className
+      ? [...unfreezedObjectProps.className.split(' '), ...prop].join(' ')
+      : prop.join(' ');
+
+    return r([
+      Object.freeze(
+        Object.assign(
+          { ...this },
+          { props: Object.freeze(unfreezedObjectProps) }
+        )
+      ),
+    ]);
+  },
+  loop(props: any[]) {
+    const _this = Map(this);
+    const unfreezedObjectProps = Map(this.props);
+    const nestedProps = Map(
+      (unfreezedObjectProps.toObject() as any).children.props
+    );
+
+    return r(
+      props.map((prop) => {
+        const nestedPropsObject = Object.freeze({
+          props: nestedProps.merge(Map(prop)).toObject(),
+        });
+        const nestedChildren = Map(unfreezedObjectProps.get('children') as any);
+
+        const nestedChildrenObject = Object.freeze({
+          children: nestedChildren.merge(nestedPropsObject).toObject(),
+        });
+
+        return r([
+          Object.freeze(
+            _this
+              .merge(
+                Map({
+                  props: nestedChildrenObject,
+                })
+              )
+              .toObject()
+          ),
+        ]);
+      })
+    );
+  },
+};
 
 // Function overloading in Typescript doesn't exist but i do it in another way
 const r0: R.R0FunctionType = (component) => render(component, {}, []);
@@ -39,7 +99,10 @@ const render: R.RenderFunctionType = (component, properties, children) => {
 
   const args: any = [component, properties].concat(children);
 
-  return React.createElement.apply(React, args);
+  return Object.freeze({
+    ...React.createElement.apply(React, args),
+    ...customComponentFunctions,
+  });
 };
 
 const fixChildren: R.FixChildrenFunctionType = (children) =>

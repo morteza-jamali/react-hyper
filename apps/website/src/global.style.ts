@@ -1,6 +1,7 @@
 import 'bulma/css/bulma.css';
 import '@morteza-jamali/lineicons/WebFont/font-css/LineIcons.css';
 import 'gfm.css/gfm.css';
+import 'simplebar/dist/simplebar.css';
 import { css } from 'glamor';
 
 const styles = () => {

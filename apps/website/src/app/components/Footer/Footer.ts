@@ -4,15 +4,12 @@ const { footer, div, span, i, a } = helpers;
 
 const Footer = () =>
   footer(
-    { className: 'footer p-3' },
-    div({ className: 'content has-text-centered' }, [
+    div([
       span('Website created with'),
-      i({
-        className: 'lni lni-heart-filled mx-1 has-text-danger',
-      }),
+      i().class(['lni', 'has-text-danger', 'mx-1', 'lni-heart-filled']),
       span('by '),
-      a({ className: 'has-text-weight-bold', href: '#!' }, 'Morteza Jamali'),
-    ])
-  );
+      a({ href: '#!' }, 'Morteza Jamali').class('has-text-weight-bold'),
+    ]).class(['content', 'has-text-centered'])
+  ).class(['footer', 'p-3']);
 
 export default Footer;
