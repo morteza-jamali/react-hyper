@@ -1,5 +1,5 @@
-import r from '@react-hyper/react-hyper/r';
-import helpers from '@react-hyper/react-hyper/helpers';
+import r from '@moraj/react-hyper/r';
+import helpers from '@moraj/react-hyper/helper';
 import Code from '../Code/Code';
 
 const { div, section } = helpers;

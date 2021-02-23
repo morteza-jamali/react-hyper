@@ -1,5 +1,5 @@
-import r from '@react-hyper/react-hyper/r';
-import helpers from '@react-hyper/react-hyper/helpers';
+import r from '@moraj/react-hyper/r';
+import helpers from '@moraj/react-hyper/helper';
 import Logo from '../Logo/Logo';
 import styles from './NavBar.style';
 
@@ -39,18 +39,20 @@ const NavBarEnd = div([
 ]).class('navbar-end');
 
 const NavBar = () =>
-  section(
+  div(
     { ...styles() },
-    nav(
-      {
-        role: 'navigation',
-        'aria-label': 'main navigation',
-      },
-      [
-        div([NavBarBrand, NavBarBurger]).class('navbar-brand'),
-        div({ id: 'navbarBasicExample' }, NavBarEnd).class('navbar-menu'),
-      ]
-    ).class('navbar')
-  ).class(['section', 'py-0']);
+    section(
+      nav(
+        {
+          role: 'navigation',
+          'aria-label': 'main navigation',
+        },
+        [
+          div([NavBarBrand, NavBarBurger]).class('navbar-brand'),
+          div({ id: 'navbarBasicExample' }, NavBarEnd).class('navbar-menu'),
+        ]
+      ).class('navbar')
+    ).class(['section', 'py-0'])
+  ).class(['is-fullWidth', 'is-zIndex-10']);
 
 export default NavBar;

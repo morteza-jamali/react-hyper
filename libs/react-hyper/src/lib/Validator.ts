@@ -1,4 +1,4 @@
-import R from './types/react-hyper';
+import R from '../../types/index';
 
 class Validator {
   properties(param: any): param is R.PropertiesType {

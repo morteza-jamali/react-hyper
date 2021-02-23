@@ -1,5 +1,5 @@
-import helpers from '@react-hyper/react-hyper/helpers';
-import r from '@react-hyper/react-hyper/r';
+import helpers from '@moraj/react-hyper/helper';
+import r from '@moraj/react-hyper/r';
 import Code from '../Code/Code';
 
 const { section, article, div, span, i } = helpers;

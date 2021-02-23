@@ -1,5 +1,5 @@
-import r from '@react-hyper/react-hyper/r';
-import helpers from '@react-hyper/react-hyper/helpers';
+import r from '@moraj/react-hyper/r';
+import helpers from '@moraj/react-hyper/helper';
 import Logo from '../Logo/Logo';
 import styles from './Header.style';
 
@@ -50,6 +50,6 @@ const Header = () =>
       'is-flex-direction-column',
       'is-flex',
     ])
-  ).class('hero');
+  ).class(['hero', 'is-medium']);
 
 export default Header;

@@ -1,19 +1,23 @@
-import tags from './data/tags.json';
-import is from './Validator';
+import tags from './data/tags';
+import is from './lib/Validator';
+import r from './r';
 
 const DEFAULT_TAG_NAMES: any = tags.defaults;
 //const SVG_TAG_NAMES: any = tags.svg;
 
-const node = (r: any) => (tagName: any) => (first: any, ...rest: any) => {
+const node = (renderer: any) => (tagName: any) => (
+  first: any,
+  ...rest: any
+) => {
   if (is.selector(first)) {
-    return r(tagName + first, ...rest);
+    return renderer(tagName + first, ...rest);
   } else {
-    return r(tagName, first, ...rest);
+    return renderer(tagName, first, ...rest);
   }
 };
 
-const helper = (r: any) => {
-  const createTag = node(r);
+export const helper = (renderer: any) => {
+  const createTag = node(renderer);
   const isSelector = is.selector;
   const exported: any = { DEFAULT_TAG_NAMES, isSelector, createTag };
   DEFAULT_TAG_NAMES.forEach((n: any) => {
@@ -25,7 +29,9 @@ const helper = (r: any) => {
   return exported;
 };
 
-export default helper;
+const helpers = helper(r);
+
+export default helpers;
 
 ///////////////////////// SVG helper
 

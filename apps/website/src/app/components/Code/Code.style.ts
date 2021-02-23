@@ -3,6 +3,21 @@ import { css } from 'glamor';
 const styles = () =>
   css({
     position: 'relative',
+    borderRadius: '0 !important',
+    '& .bottom-buttons, & .top-label': {
+      background: '#36394a',
+    },
+    '& .top-label': {
+      borderTopLeftRadius: '0.3em',
+      borderTopRightRadius: '0.3em',
+      '& .tag': {
+        background: 'transparent',
+      },
+    },
+    '& .bottom-buttons': {
+      borderBottomLeftRadius: '0.3em',
+      borderBottomRightRadius: '0.3em',
+    },
     '& .result-code': {
       position: 'absolute',
       top: '0',
@@ -11,26 +26,16 @@ const styles = () =>
       left: '0',
     },
     '& pre': {
+      overflow: 'hidden !important',
+      display: 'inline-block',
       margin: '0 !important',
-      '&.has-bottom-buttons': {
-        paddingBottom: '4em !important',
-      },
+      minWidth: '100%',
+      minHeight: '100%',
+      float: 'left',
+      borderRadius: '0 !important',
     },
-    '&:hover': {
-      '& span.tag:not(.bottom-buttons span)': {
-        opacity: '0.5',
-        transition: 'all 0.3s',
-      },
-    },
-    '& span.tag:not(.bottom-buttons span)': {
-      position: 'absolute',
-      top: '5px',
-      right: '5px',
-    },
-    '& div.bottom-buttons': {
-      position: 'absolute',
-      bottom: '5px',
-      right: '5px',
+    '& .code-section': {
+      position: 'relative',
     },
   });
 

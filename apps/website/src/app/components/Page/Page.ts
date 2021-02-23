@@ -1,4 +1,4 @@
-import helpers from '@react-hyper/react-hyper/helpers';
+import helpers from '@moraj/react-hyper/helper';
 
 const Page = ({ children, className, ...rest }: any) =>
   helpers

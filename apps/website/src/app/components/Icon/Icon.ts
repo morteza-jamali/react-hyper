@@ -1,4 +1,4 @@
-import helpers from '@react-hyper/react-hyper/helpers';
+import helpers from '@moraj/react-hyper/helper';
 
 const Icon = ({ name, ...rest }: any) =>
   helpers.i().class(['lni', `lni-${name}`, rest.className ?? '']);

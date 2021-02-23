@@ -1,4 +1,4 @@
-import helpers from '@react-hyper/react-hyper/helpers';
+import helpers from '@moraj/react-hyper/helper';
 
 const Logo = ({ white, ...rest }: any) =>
   helpers.img({ src: `assets/logo${white ? 'white' : ''}.svg`, ...rest });

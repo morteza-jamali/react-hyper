@@ -1,4 +1,4 @@
-import tags from '../src/data/tags.json';
+import tags from '../data/tags.json';
 import faker from 'faker';
 
 const testingAttributes = {

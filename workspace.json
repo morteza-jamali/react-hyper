@@ -142,6 +142,37 @@
             ]
           }
         },
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/react-hyper",
+            "tsConfig": "libs/react-hyper/tsconfig.lib.json",
+            "project": "libs/react-hyper/package.json",
+            "entryFile": "libs/react-hyper/src/index.ts",
+            "external": [
+              "react",
+              "react-dom",
+              "immutable"
+            ],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              },
+              {
+                "glob": "LICENSE",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
         "test": {
           "executor": "@nrwl/jest:jest",
           "outputs": [

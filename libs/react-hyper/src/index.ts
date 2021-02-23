@@ -1,6 +1,5 @@
-import helpers from './helpers';
-import helper from './lib/Helper';
+import helpers from './helper';
+import { helper } from './helper';
 import r from './r';
-import R from './lib/types/react-hyper';
 
-export { helpers, helper, r, R };
+export { helpers, helper, r };
